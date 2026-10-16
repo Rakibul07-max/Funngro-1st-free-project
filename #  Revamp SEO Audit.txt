@@ -1,0 +1,142 @@
+# Funngro Website Revamp: SEO Audit Report
+
+**Prepared by:** [Your name]  **Date:** [Date]  **File audited:** `index.html` (single-file, two-view website)
+
+## 1. Audit overview
+
+**Method.** This is a **code inspection** of `index.html` only. No automated tool was run: no PageSpeed Insights, Lighthouse, Google Search Console, W3C validator, crawler or broken-link checker. No live-site testing has been done, and the site has not been published. No scores, rankings or traffic figures appear here because none exist yet.
+
+**Status key:** *Implemented* = present in the code. *Needs Verification* = present or plausible but must be tested or confirmed. *Not Implemented* = absent, with reason.
+
+**Key limitation of the single-file design.** The site switches between "For Teens" and "For Companies" with JavaScript and a URL hash (`#teens`, `#companies`). Changing `document.title`, the meta description or the hash does **not** create two independently indexable pages. Search engines treat everything before `#` as one URL, so both views share a single URL. Crawlers that do not run JavaScript will see the Teens view and the static `<title>`/description. Crawlers that do render JavaScript may see more, but indexing both views as separate pages should not be assumed. For real SEO, each audience needs its own URL (for example separate `/teens` and `/companies` pages, or server-side routing). Single-file delivery is kept here only to meet the assignment.
+
+## 2. Website structure and technical SEO
+
+| Item | What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|---|
+| Document structure | `doctype`, `lang`, charset, viewport | `<!DOCTYPE html>`, `lang="en"`, UTF-8 and a responsive viewport tag are present | Basic parsing and mobile rendering | None | Implemented |
+| Semantic elements | `header`, `nav`, `main`, `section`, `footer` | All used; each section has `aria-labelledby` | Helps crawlers and assistive tech understand layout | Keep | Implemented |
+| Two views in one URL | Hash-based toggle | One URL for both views (see section 1) | Limits independent indexing | Move to separate URLs when going to production | Not Implemented (by design) |
+| Canonical tag | `<link rel="canonical">` | Only a commented placeholder; no real domain is known | A wrong canonical can hurt indexing | After publishing, uncomment and use the real URL | Needs Verification |
+| Raw HTML content | Content without JS | Both views are in the HTML source; Companies view is `hidden` until selected. A `<noscript>` rule shows it without JS | Content in source is easier to crawl | Prefer separate URLs for reliable indexing | Needs Verification |
+
+## 3. Title and meta description
+
+| What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|
+| Static `<title>` | "Funngro \| India's #1 Youth Earning & Teen Freelance Platform" (about 60 characters, matches the brief) | Titles are a key relevance signal and appear in results | Confirm the "#1" claim is verifiable, or remove it | Needs Verification |
+| Per-view title | JS sets a different title for the Companies view | Helps users and browser history; crawlers may not use it | Use separate pages for true per-page titles | Implemented (client-side only) |
+| Meta description | Unique description for Teens (static) and Companies (set by JS), each under 160 characters | Influences click-through rate | Keep unique per URL in production | Implemented |
+| Open Graph / Twitter | `og:type`, `og:title`, `og:description`, `og:locale`, `twitter:card` present | Controls link previews. Social scrapers do not run JS, so they always see the Teens version | Add `og:url` and `og:image` after publishing | Needs Verification |
+
+## 4. Heading hierarchy
+
+| What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|
+| H1 | One `<h1>` per view; the hidden view is not exposed to assistive tech, but both h1s exist in source | A clear main topic per page | Separate URLs would give exactly one h1 per document | Implemented / Needs Verification |
+| H2 to H3 order | Sections use `<h2>`, cards and steps use `<h3>`, no skipped levels | Logical outline aids accessibility and parsing | Re-check with a validator or headings extension | Needs Verification |
+
+## 5. Content quality and keyword relevance
+
+| What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|
+| Keyword use | Natural use of "teen freelancing", "freelance gigs", "young talent", "India", plus the four categories | Matches search intent without stuffing | Compare with real keyword research (Google Keyword Planner, Search Console) | Implemented |
+| Unverified claims | Headline claim "India's Top Brands" and title claim "#1" come from the brief | False claims harm trust and may breach advertising rules | Verify with official Funngro sources or reword | Needs Verification |
+| Statistics | The earlier draft's "70 Lakh+ Teens" and "₹1.4 Cr+ Paid" were **removed** because they could not be verified here | Fake numbers are a credibility risk | Re-add only with an official Funngro source, cited | Not Implemented (deliberate) |
+| Clients and testimonials | The placeholder logo section was **removed**; no clients, reviews or awards are invented | Avoid fabricated social proof | Add real, permitted logos later | Not Implemented (deliberate) |
+| Product details | Payment, age and pricing statements are kept generic and point readers to official Funngro information | Avoids stating rules this project cannot confirm | Replace with accurate details from Funngro | Needs Verification |
+| FAQ content | 5 teen and 4 company FAQs in visible text | Answers common questions and supports long-tail queries | Base answers on real support questions | Implemented |
+
+## 6. Mobile responsiveness
+
+| What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|
+| Layout code | Tailwind responsive grids, `overflow-x-hidden` on body, stacked buttons on small screens, wordmark hidden below 420px to fit the tabs | Mobile-first indexing and user experience | Test at 360px, tablet and desktop in browser dev tools and on a real Android phone | Needs Verification |
+| Tap targets | Buttons and tabs have `min-height` of 44 to 48px | Easier tapping | Confirm on a device | Needs Verification |
+
+## 7. Accessibility
+
+| What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|
+| Tabs | `role="tablist"`, `tab`, `tabpanel`, `aria-selected`, `aria-controls`; arrow, Home and End keys work | Keyboard and screen-reader support | Test with a screen reader | Implemented / Needs Verification |
+| Skip link and focus | "Skip to main content" link, visible `:focus-visible` outlines | Keyboard users | Test tab order manually | Implemented |
+| Icons | Decorative Lucide icons are marked hidden by the library; no icon-only controls | Avoids noisy labels | Confirm in the rendered DOM | Needs Verification |
+| Reduced motion, live region | `prefers-reduced-motion` honoured; CTA notice uses `role="status"` | Inclusive motion and feedback | None | Implemented |
+| Colour contrast | Palette chosen for contrast but not measured | WCAG requires sufficient contrast | Check with a contrast tool or Lighthouse | Needs Verification |
+
+## 8. Internal linking
+
+| What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|
+| Link format | `#teens`, `#companies`, `#teens/faq` style links; JS maps them to a page and section id (`teens-faq`) | Clean navigation inside one file | Verify every link scrolls correctly | Needs Verification |
+| Descriptive anchor text | "See how it works", "See how hiring works", "Teen FAQ", "Company FAQ" | Descriptive text helps users and crawlers | Keep | Implemented |
+| CTA destinations | "Download App" and "Post a Project" are buttons. With no official URL configured they show a notice instead of a fake link | Prevents broken or misleading links | Fill the `LINKS` object in the script with official Funngro URLs | Needs Verification |
+
+## 9. Page performance considerations
+
+| What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|
+| Tailwind CDN | The Play CDN compiles CSS in the browser | Slower first render; not intended for production | Build and minify Tailwind CSS for production | Not Implemented (assignment constraint) |
+| Third-party scripts and fonts | Lucide from unpkg, Google Fonts with `preconnect`, Lucide loaded with `defer` | Extra requests affect Core Web Vitals | Inline the few icons needed as SVG, limit font weights | Needs Verification |
+| Layout shift | Icons render after load | May cause small layout shift | Reserve icon sizes (already set with width/height classes) | Needs Verification |
+| Measured performance | Not measured | No scores exist | Run PageSpeed Insights and Lighthouse (section 14) | Needs Verification |
+
+## 10. Image optimization
+
+| What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|
+| Images | The site uses **no raster images**; only inline SVG icons and CSS shapes | Fast, no alt text needed | If images are added: descriptive `alt`, WebP/AVIF, `width`/`height`, `loading="lazy"` below the fold | Implemented (not applicable) |
+| Social preview image | No `og:image` | Link shares will have no image | Create a 1200x630 image and add it after publishing | Not Implemented |
+
+## 11. Indexing and crawlability
+
+| What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|
+| robots.txt and sitemap | Not created. No fake locations are referenced | Helps crawl control and discovery | Add both on a real domain with separate URLs | Not Implemented |
+| Search indexing | Site not published, so nothing is indexed | Indexing cannot be assumed | After publishing, use URL Inspection in Google Search Console | Needs Verification |
+| Hash views | Fragments are generally ignored for indexing | See section 1 | Use separate URLs for production | Not Implemented (by design) |
+
+## 12. Structured data
+
+| What was checked | Finding | Why it matters | Recommendation | Status |
+|---|---|---|---|---|
+| JSON-LD | None added. `Organization` markup needs real, verified details (official URL, logo) and this is a student project, not the official site | Invalid or misleading markup can be ignored or penalised | If this becomes a real site, add `Organization` with real data and test in Google's Rich Results Test and Schema Markup Validator | Not Implemented |
+| FAQ markup | Not added | Google limits FAQ rich results to a small set of sites, so benefit is unlikely | Skip unless eligibility changes | Not Implemented |
+
+## 13. Prioritized improvements
+
+| Priority | Improvement | Status |
+|---|---|---|
+| High | Publish the site, then add real canonical and `og:url` | Pending |
+| High | Verify or reword "#1" and "India's Top Brands" claims | Pending |
+| High | Run PageSpeed Insights, Lighthouse and the W3C validator, then fix reported issues | Pending |
+| High | Plan separate URLs for Teens and Companies for production SEO | Pending |
+| Medium | Add official app and project links to `LINKS` | Pending |
+| Medium | Replace Tailwind CDN with compiled CSS | Pending |
+| Medium | Add `og:image`, robots.txt and sitemap on a real domain | Pending |
+| Low | Add verified statistics and real client logos with sources | Pending |
+
+## 14. Future testing plan
+
+| Test | How | Record result here |
+|---|---|---|
+| Google PageSpeed Insights | Enter the published URL at pagespeed.web.dev; test mobile and desktop | [pending] |
+| Lighthouse | Chrome DevTools > Lighthouse; run SEO, Accessibility, Performance, Best Practices | [pending] |
+| Mobile usability | Chrome DevTools device mode at 360px, a tablet size, and a real Android phone | [pending] |
+| Broken links | Click every link, or use a link-checker tool on the published URL | [pending] |
+| Search indexing | Add the property in Google Search Console, inspect the URL, request indexing, check later | [pending] |
+| HTML validation | Paste or upload `index.html` at validator.w3.org | [pending] |
+
+## 15. Final checklist
+
+| Task | Status |
+|---|---|
+| Single-file HTML with two views | Done (code) |
+| Title, meta description, viewport, Open Graph tags | Done (code) |
+| Semantic HTML and heading structure | Done (code), validator pending |
+| Accessible tabs and skip link | Done (code), manual test pending |
+| Unverified stats and logos removed | Done |
+| Canonical URL, `og:url`, `og:image` | Pending publication |
+| Automated audits (PSI, Lighthouse, validator) | Not run |
+| Published URL | Not published |
+| Link added to Funngro Remarks field | Pending |

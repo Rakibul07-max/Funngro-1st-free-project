@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funngro | India's #1 Youth Earning & Teen Freelance Platform</title>
+<meta name="description" content="Funngro helps teens in India find freelance gigs in web design, video editing, content and testing, build real skills and earn their own money.">
+<meta name="theme-color" content="#0f1020">
+
+<!--
+  CANONICAL / OG URL (add only after you publish; do NOT use a made-up domain):
+  <link rel="canonical" href="https://YOUR-PUBLISHED-URL-HERE/">
+  <meta property="og:url" content="https://YOUR-PUBLISHED-URL-HERE/">
+  <meta property="og:image" content="https://YOUR-PUBLISHED-URL-HERE/preview.png">
+-->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Funngro Website Revamp (test project)">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Funngro | India's #1 Youth Earning & Teen Freelance Platform">
+<meta property="og:description" content="Teens find freelance gigs and build skills. Companies hire young talent for design, video, content and testing projects.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Funngro | Teen Freelance Gigs and Young Talent Hiring in India">
+<meta name="twitter:description" content="Teens find freelance gigs and build skills. Companies hire young talent for design, video, content and testing projects.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%236c4cff'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'], sans: ['"DM Sans"', 'system-ui', 'sans-serif'] },
+  colors: { ink: '#0f1020', brand: '#6c4cff', coin: '#ffc83d', mint: '#2ee6a6' }
+} } };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', system-ui, sans-serif; }
+  section[id] { scroll-margin-top: 4.5rem; }
+  .panel:not([hidden]) { animation: fade .3s ease; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  .wrap { max-width: 72rem; margin: 0 auto; padding: 3.5rem 1rem; }
+  @media (min-width: 640px) { .wrap { padding: 5rem 1rem; } }
+  .h2 { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 1.875rem; line-height: 1.15; }
+  .h3 { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 1.125rem; }
+  @media (min-width: 640px) { .h2 { font-size: 2.25rem; } }
+  .lead { margin-top: .5rem; max-width: 36rem; color: #475569; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; transition: transform .2s, box-shadow .2s; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -14px rgba(15,16,32,.35); }
+  .ico { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: .75rem; margin-bottom: 1rem; background: rgba(108,76,255,.1); color: #6c4cff; }
+  .ico.m { background: rgba(46,230,166,.22); color: #047857; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 48px; padding: .75rem 1.5rem; border-radius: .75rem; font-weight: 600; transition: transform .15s, box-shadow .2s, background-color .2s; }
+  .btn:hover { box-shadow: 0 10px 24px -10px rgba(108,76,255,.7); }
+  .btn:active, .tab:active { transform: scale(.97); }
+  .btn-coin { background: #ffc83d; color: #0f1020; }
+  .btn-mint { background: #2ee6a6; color: #0f1020; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,.3); color: #fff; }
+  .btn-ghost:hover { background: rgba(255,255,255,.1); }
+  .tab { min-height: 44px; padding: 0 .9rem; border-radius: 9999px; font-size: .875rem; font-weight: 600; transition: background-color .2s, color .2s, transform .15s; }
+  @media (min-width: 640px) { .tab { padding: 0 1.4rem; } }
+  .tab[aria-selected="true"] { background: #ffc83d; color: #0f1020; }
+  .tab[aria-selected="false"]:hover { background: rgba(255,255,255,.12); }
+  .ladder { position: relative; }
+  .ladder::before { content: ""; position: absolute; left: 19px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(#6c4cff, #ffc83d); }
+  .step-n { position: absolute; left: 0; top: 0; width: 2.5rem; height: 2.5rem; display: grid; place-items: center; border-radius: 9999px; font-weight: 700; background: #6c4cff; color: #fff; }
+  .faq { background: #fff; border: 1px solid #e2e8f0; border-radius: .875rem; }
+  .faq + .faq { margin-top: .75rem; }
+  .faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; align-items: center; min-height: 48px; padding: .5rem 1rem; font-weight: 600; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font-size: 1.25rem; color: #6c4cff; }
+  .faq[open] summary::after { content: "\2212"; }
+  .faq p { padding: 0 1rem 1rem; color: #475569; }
+  .skip { position: absolute; left: -999px; top: 0; background: #ffc83d; color: #0f1020; padding: .75rem 1rem; z-index: 60; font-weight: 600; }
+  .skip:focus { left: 0; }
+  :focus-visible { outline: 3px solid #ffc83d; outline-offset: 2px; }
+  .faq :focus-visible, .card :focus-visible { outline-color: #6c4cff; }
+  #toast { position: fixed; left: 1rem; right: 1rem; bottom: 1rem; max-width: 28rem; margin: 0 auto; background: #0f1020; color: #fff; border-radius: .75rem; padding: .9rem 1rem; font-size: .875rem; box-shadow: 0 10px 30px rgba(0,0,0,.35); z-index: 50; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .25s, transform .25s; }
+  #toast.show { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+</style>
+<noscript><style>#page-companies { display: block !important; }</style></noscript>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="sticky top-0 z-40 bg-ink text-white border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between gap-3">
+    <a href="#teens" class="font-display font-extrabold text-xl flex items-center gap-2 min-h-[44px]" aria-label="Funngro, go to For Teens page">
+      <span class="grid place-items-center w-8 h-8 rounded-lg bg-brand"><i data-lucide="zap" class="w-4 h-4 text-coin"></i></span>
+      <span class="hidden min-[420px]:inline">Funngro</span>
+    </a>
+    <nav aria-label="Choose audience">
+      <div class="bg-white/10 rounded-full p-1 flex" role="tablist" aria-label="Website pages">
+        <button class="tab" role="tab" id="tab-teens" data-page="teens" aria-controls="page-teens" aria-selected="true">For Teens</button>
+        <button class="tab" role="tab" id="tab-companies" data-page="companies" aria-controls="page-companies" aria-selected="false" tabindex="-1">For Companies</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= PAGE A: FOR TEENS ================= -->
+<div id="page-teens" class="panel" role="tabpanel" aria-labelledby="tab-teens">
+  <section class="bg-ink text-white relative overflow-hidden" aria-labelledby="teens-h1">
+    <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-brand/30 blur-3xl" aria-hidden="true"></div>
+    <div class="wrap relative">
+      <p class="inline-flex items-center gap-2 text-sm bg-white/10 rounded-full px-3 py-1 mb-5"><i data-lucide="badge-indian-rupee" class="w-4 h-4 text-coin"></i>Teen freelancing in India</p>
+      <h1 id="teens-h1" class="font-display font-extrabold text-4xl sm:text-6xl leading-[1.05] max-w-3xl">Earn Real Money with India's Top Brands</h1>
+      <p class="mt-5 text-lg text-white/80 max-w-xl">Pick a freelance gig, finish the work and build your first portfolio. Funngro helps teens turn skills like design, editing and writing into real earnings.</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <button type="button" class="btn btn-coin" data-link="app"><i data-lucide="smartphone" class="w-5 h-5"></i>Download App</button>
+        <a href="#teens/how" class="btn btn-ghost">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="teens-how" aria-labelledby="teens-how-h" class="wrap">
+    <h2 id="teens-how-h" class="h2">How Funngro works for teens</h2>
+    <p class="lead">A simple way to find real projects, learn on the job and earn.</p>
+    <div class="mt-8 grid md:grid-cols-3 gap-4">
+      <article class="card"><span class="ico"><i data-lucide="briefcase"></i></span><h3 class="h3">Find real projects</h3><p class="mt-1 text-sm text-slate-600">Browse freelance gigs posted by companies and pick the ones that match your skills.</p></article>
+      <article class="card"><span class="ico"><i data-lucide="hammer"></i></span><h3 class="h3">Do the work</h3><p class="mt-1 text-sm text-slate-600">Follow the brief, ask questions early and deliver your best version on time.</p></article>
+      <article class="card"><span class="ico"><i data-lucide="wallet"></i></span><h3 class="h3">Earn and grow</h3><p class="mt-1 text-sm text-slate-600">Collect your earnings, add the project to your portfolio and aim for bigger gigs.</p></article>
+    </div>
+  </section>
+
+  <section id="teens-categories" aria-labelledby="teens-cat-h" class="bg-white border-y border-slate-200">
+    <div class="wrap">
+      <h2 id="teens-cat-h" class="h2">Freelance project categories</h2>
+      <p class="lead">Choose the kind of work that fits your skills and your schedule.</p>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <article class="card"><span class="ico"><i data-lucide="layout-template"></i></span><h3 class="h3">Web Design</h3><p class="mt-1 text-sm text-slate-600">Design landing pages and app screens.</p></article>
+        <article class="card"><span class="ico"><i data-lucide="clapperboard"></i></span><h3 class="h3">Video Editing</h3><p class="mt-1 text-sm text-slate-600">Cut reels, shorts and explainer videos.</p></article>
+        <article class="card"><span class="ico"><i data-lucide="pen-line"></i></span><h3 class="h3">Content</h3><p class="mt-1 text-sm text-slate-600">Write posts, scripts and captions.</p></article>
+        <article class="card"><span class="ico"><i data-lucide="bug-play"></i></span><h3 class="h3">Testing</h3><p class="mt-1 text-sm text-slate-600">Try apps and sites, then report bugs and feedback.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="teens-benefits" aria-labelledby="teens-ben-h" class="wrap">
+    <h2 id="teens-ben-h" class="h2">Benefits for teenagers</h2>
+    <div class="mt-8 grid sm:grid-cols-2 gap-4">
+      <article class="card"><span class="ico"><i data-lucide="indian-rupee"></i></span><h3 class="h3">Earn your own money</h3><p class="mt-1 text-sm text-slate-600">Get paid for work you are good at instead of waiting for a first job.</p></article>
+      <article class="card"><span class="ico"><i data-lucide="folder-open"></i></span><h3 class="h3">Build a portfolio</h3><p class="mt-1 text-sm text-slate-600">Every finished project is proof of skill for future internships and studies.</p></article>
+      <article class="card"><span class="ico"><i data-lucide="graduation-cap"></i></span><h3 class="h3">Learn work habits</h3><p class="mt-1 text-sm text-slate-600">Practise deadlines, communication and taking feedback.</p></article>
+      <article class="card"><span class="ico"><i data-lucide="compass"></i></span><h3 class="h3">Try careers early</h3><p class="mt-1 text-sm text-slate-600">Test design, video, writing or QA work before you choose a path.</p></article>
+    </div>
+  </section>
+
+  <section id="teens-steps" aria-labelledby="teens-steps-h" class="bg-white border-y border-slate-200">
+    <div class="max-w-3xl mx-auto wrap">
+      <h2 id="teens-steps-h" class="h2">Your earnings ladder</h2>
+      <p class="lead">Each step can lead to bigger projects as you build experience.</p>
+      <ol class="ladder mt-10 space-y-8">
+        <li class="relative pl-14"><span class="step-n" aria-hidden="true">1</span><h3 class="h3">Create your profile</h3><p class="text-slate-600 text-sm">Add your skills and a sample of your work.</p></li>
+        <li class="relative pl-14"><span class="step-n" aria-hidden="true">2</span><h3 class="h3">Apply to your first gig</h3><p class="text-slate-600 text-sm">Start with a small task to learn how project briefs work.</p></li>
+        <li class="relative pl-14"><span class="step-n" aria-hidden="true">3</span><h3 class="h3">Deliver and get paid</h3><p class="text-slate-600 text-sm">Submit on time and earn the payout listed for the project.</p></li>
+        <li class="relative pl-14"><span class="step-n" aria-hidden="true" style="background:#ffc83d;color:#0f1020">4</span><h3 class="h3">Level up</h3><p class="text-slate-600 text-sm">Strong work can open the door to larger and repeat projects.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="teens-faq" aria-labelledby="teens-faq-h" class="wrap max-w-3xl">
+    <h2 id="teens-faq-h" class="h2">Frequently asked questions</h2>
+    <div class="mt-8">
+      <details class="faq"><summary>Who can join Funngro?</summary><p>Funngro is built for young people. Check the official Funngro website for the current age and eligibility rules before you sign up.</p></details>
+      <details class="faq"><summary>Do I need experience to start?</summary><p>No. Start with a skill you already enjoy and choose a small project first. Each finished project adds to your experience.</p></details>
+      <details class="faq"><summary>How do I get paid?</summary><p>Each project lists its own terms. Read the brief carefully before you apply so you know what is expected and what you will earn.</p></details>
+      <details class="faq"><summary>Should I tell my parents or guardians?</summary><p>Yes. Talk to a parent or guardian about online work and review Funngro's official policies together.</p></details>
+      <details class="faq"><summary>Which skills can I use?</summary><p>Popular starting points are web design, video editing, content writing and app or website testing.</p></details>
+    </div>
+  </section>
+
+  <section id="teens-cta" aria-labelledby="teens-cta-h" class="max-w-6xl mx-auto px-4 pb-14 sm:pb-20">
+    <div class="rounded-3xl bg-ink text-white p-8 sm:p-12 text-center">
+      <h2 id="teens-cta-h" class="font-display font-extrabold text-3xl sm:text-4xl">Your first gig starts with one tap</h2>
+      <p class="mt-3 text-white/80 max-w-md mx-auto">Get the Funngro app and start building your freelance journey.</p>
+      <button type="button" class="btn btn-coin mt-7" data-link="app"><i data-lucide="download" class="w-5 h-5"></i>Download App</button>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PAGE B: FOR COMPANIES ================= -->
+<div id="page-companies" class="panel" role="tabpanel" aria-labelledby="tab-companies" hidden>
+  <section class="bg-ink text-white relative overflow-hidden" aria-labelledby="companies-h1">
+    <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-mint/20 blur-3xl" aria-hidden="true"></div>
+    <div class="wrap relative">
+      <p class="inline-flex items-center gap-2 text-sm bg-white/10 rounded-full px-3 py-1 mb-5"><i data-lucide="building-2" class="w-4 h-4 text-mint"></i>Hire young talent in India</p>
+      <h1 id="companies-h1" class="font-display font-extrabold text-4xl sm:text-6xl leading-[1.05] max-w-4xl">Hire Fast, Skilled Teen Talent for High-ROI Execution</h1>
+      <p class="mt-5 text-lg text-white/80 max-w-xl">Post a project and work with motivated young freelancers for design, video, content and testing tasks, without agency overhead.</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <button type="button" class="btn btn-mint" data-link="post"><i data-lucide="send" class="w-5 h-5"></i>Post a Project</button>
+        <a href="#companies/process" class="btn btn-ghost">See how hiring works</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="companies-value" aria-labelledby="companies-val-h" class="wrap">
+    <h2 id="companies-val-h" class="h2">Why companies hire on Funngro</h2>
+    <p class="lead">Get well-defined projects done by young freelancers who are eager to prove themselves.</p>
+    <div class="mt-8 grid md:grid-cols-3 gap-4">
+      <article class="card"><span class="ico m"><i data-lucide="timer"></i></span><h3 class="h3">Fast turnaround</h3><p class="mt-1 text-sm text-slate-600">Post a brief and start reviewing applicants without a long hiring process.</p></article>
+      <article class="card"><span class="ico m"><i data-lucide="piggy-bank"></i></span><h3 class="h3">Cost-effective</h3><p class="mt-1 text-sm text-slate-600">Scope work as projects so you can control spend on each task.</p></article>
+      <article class="card"><span class="ico m"><i data-lucide="shield-check"></i></span><h3 class="h3">Quality you can review</h3><p class="mt-1 text-sm text-slate-600">Share clear requirements, check deliverables and request revisions before you approve.</p></article>
+    </div>
+  </section>
+
+  <section id="companies-benefits" aria-labelledby="companies-ben-h" class="bg-white border-y border-slate-200">
+    <div class="wrap">
+      <h2 id="companies-ben-h" class="h2">Benefits of hiring young talent</h2>
+      <div class="mt-8 grid sm:grid-cols-2 gap-4">
+        <article class="card"><span class="ico m"><i data-lucide="smartphone"></i></span><h3 class="h3">Digital-native skills</h3><p class="mt-1 text-sm text-slate-600">Teens grow up with social media, short video and mobile apps.</p></article>
+        <article class="card"><span class="ico m"><i data-lucide="lightbulb"></i></span><h3 class="h3">Fresh perspective</h3><p class="mt-1 text-sm text-slate-600">Get ideas that reflect how young audiences actually think.</p></article>
+        <article class="card"><span class="ico m"><i data-lucide="rocket"></i></span><h3 class="h3">High motivation</h3><p class="mt-1 text-sm text-slate-600">Young freelancers are building their portfolios and want strong results.</p></article>
+        <article class="card"><span class="ico m"><i data-lucide="users"></i></span><h3 class="h3">Early talent connection</h3><p class="mt-1 text-sm text-slate-600">Meet future designers, editors and writers before anyone else does.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="companies-categories" aria-labelledby="companies-cat-h" class="wrap">
+    <h2 id="companies-cat-h" class="h2">Projects you can hire for</h2>
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <article class="card"><span class="ico m"><i data-lucide="layout-template"></i></span><h3 class="h3">Web Design</h3><p class="mt-1 text-sm text-slate-600">Landing pages, UI screens and mockups.</p></article>
+      <article class="card"><span class="ico m"><i data-lucide="clapperboard"></i></span><h3 class="h3">Video Editing</h3><p class="mt-1 text-sm text-slate-600">Reels, shorts and promo cuts.</p></article>
+      <article class="card"><span class="ico m"><i data-lucide="pen-line"></i></span><h3 class="h3">Content</h3><p class="mt-1 text-sm text-slate-600">Blog posts, social captions and scripts.</p></article>
+      <article class="card"><span class="ico m"><i data-lucide="bug-play"></i></span><h3 class="h3">Testing</h3><p class="mt-1 text-sm text-slate-600">User testing, bug reports and feedback.</p></article>
+    </div>
+  </section>
+
+  <section id="companies-process" aria-labelledby="companies-proc-h" class="bg-white border-y border-slate-200">
+    <div class="max-w-3xl mx-auto wrap">
+      <h2 id="companies-proc-h" class="h2">How hiring works</h2>
+      <ol class="ladder mt-10 space-y-8">
+        <li class="relative pl-14"><span class="step-n" aria-hidden="true">1</span><h3 class="h3">Post your project</h3><p class="text-slate-600 text-sm">Describe the task, deadline and budget.</p></li>
+        <li class="relative pl-14"><span class="step-n" aria-hidden="true">2</span><h3 class="h3">Review applicants</h3><p class="text-slate-600 text-sm">Compare profiles and sample work, then choose a freelancer.</p></li>
+        <li class="relative pl-14"><span class="step-n" aria-hidden="true">3</span><h3 class="h3">Collaborate and review</h3><p class="text-slate-600 text-sm">Share feedback on drafts and request changes.</p></li>
+        <li class="relative pl-14"><span class="step-n" aria-hidden="true" style="background:#2ee6a6;color:#0f1020">4</span><h3 class="h3">Approve the final work</h3><p class="text-slate-600 text-sm">Accept the deliverable and close the project.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="companies-faq" aria-labelledby="companies-faq-h" class="wrap max-w-3xl">
+    <h2 id="companies-faq-h" class="h2">Frequently asked questions</h2>
+    <div class="mt-8">
+      <details class="faq"><summary>What kind of projects suit teen freelancers?</summary><p>Well-scoped tasks with a clear brief, such as designs, edits, written content and product testing.</p></details>
+      <details class="faq"><summary>How should I write a good brief?</summary><p>State the goal, format, deadline and budget, and attach examples of what you like.</p></details>
+      <details class="faq"><summary>What are the costs and payment terms?</summary><p>Check the official Funngro website or contact Funngro for current pricing and payment terms.</p></details>
+      <details class="faq"><summary>How do I make sure the work meets my needs?</summary><p>Share clear requirements, review drafts early and give specific feedback before final approval.</p></details>
+    </div>
+  </section>
+
+  <section id="companies-cta" aria-labelledby="companies-cta-h" class="max-w-6xl mx-auto px-4 pb-14 sm:pb-20">
+    <div class="rounded-3xl bg-ink text-white p-8 sm:p-12 text-center">
+      <h2 id="companies-cta-h" class="font-display font-extrabold text-3xl sm:text-4xl">Have a project in mind?</h2>
+      <p class="mt-3 text-white/80 max-w-md mx-auto">Share your brief and meet young freelancers ready to deliver.</p>
+      <button type="button" class="btn btn-mint mt-7" data-link="post"><i data-lucide="send" class="w-5 h-5"></i>Post a Project</button>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="bg-ink text-white/75 text-sm">
+  <div class="max-w-6xl mx-auto px-4 py-8 grid gap-4 sm:grid-cols-2">
+    <div>
+      <p class="font-display font-bold text-white text-lg">Funngro Website Revamp</p>
+      <p class="mt-1">Student test project. Not the official Funngro website.</p>
+    </div>
+    <nav aria-label="Footer" class="flex flex-wrap gap-x-6 gap-y-1">
+      <a class="py-2 underline-offset-4 hover:underline" href="#teens">For Teens</a>
+      <a class="py-2 underline-offset-4 hover:underline" href="#teens/faq">Teen FAQ</a>
+      <a class="py-2 underline-offset-4 hover:underline" href="#companies">For Companies</a>
+      <a class="py-2 underline-offset-4 hover:underline" href="#companies/faq">Company FAQ</a>
+    </nav>
+  </div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  // Add official Funngro links here when you have them. Leave empty to show a demo notice.
+  var LINKS = { app: 'Funngro Official Website', post: '' };
+
+  var META = {
+    teens: {
+      title: "Funngro | India's #1 Youth Earning & Teen Freelance Platform",
+      desc: 'Funngro helps teens in India find freelance gigs in web design, video editing, content and testing, build real skills and earn their own money.'
+    },
+    companies: {
+      title: 'Hire Young Talent in India | Freelance Projects for Companies | Funngro',
+      desc: 'Post a project and hire young freelancers in India for web design, video editing, content and testing. Fast, cost-effective execution with clear briefs.'
+    }
+  };
+
+  var panels = { teens: document.getElementById('page-teens'), companies: document.getElementById('page-companies') };
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  var descEl = document.querySelector('meta[name="description"]');
+  var toast = document.getElementById('toast');
+  var toastTimer;
+
+  // Hash format: #teens, #companies, or #page/section (e.g. #teens/faq)
+  function parseHash() {
+    var parts = location.hash.replace(/^#/, '').split('/');
+    return { page: panels[parts[0]] ? parts[0] : 'teens', section: parts[1] || '' };
+  }
+
+  function render() {
+    var s = parseHash();
+    Object.keys(panels).forEach(function (k) { panels[k].hidden = (k !== s.page); });
+    tabs.forEach(function (t) {
+      var on = t.dataset.page === s.page;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    document.title = META[s.page].title;
+    if (descEl) descEl.setAttribute('content', META[s.page].desc);
+    var target = s.section ? document.getElementById(s.page + '-' + s.section) : null;
+    if (target) { target.scrollIntoView(); } else { window.scrollTo({ top: 0, behavior: 'instant' }); }
+  }
+
+  function go(page) { if (location.hash !== '#' + page) { location.hash = page; } else { render(); } }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { go(tab.dataset.page); });
+    tab.addEventListener('keydown', function (e) {
+      var n = tabs.length, next = null;
+      if (e.key === 'ArrowRight') next = (i + 1) % n;
+      else if (e.key === 'ArrowLeft') next = (i - 1 + n) % n;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = n - 1;
+      if (next !== null) { e.preventDefault(); tabs[next].focus(); go(tabs[next].dataset.page); }
+    });
+  });
+
+  window.addEventListener('hashchange', render); // Back/Forward and typed hashes
+
+  // Call-to-action buttons: open the real link if configured, otherwise explain.
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-link]');
+    if (!btn) return;
+    var url = LINKS[btn.dataset.link];
+    if (url) { window.open(url, '_blank', 'noopener'); return; }
+    toast.textContent = 'Demo project: add the official Funngro link to LINKS in the script to activate this button.';
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 4000);
+  });
+
+  render();
+  window.addEventListener('load', function () { if (window.lucide) { window.lucide.createIcons(); } });
+})();
+</script>
+</body>
+</html>
